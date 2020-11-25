@@ -40,6 +40,7 @@ public class DownstreamCollectors {
 
     public static void main(String[] args) throws IOException {
         Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
+
         locales = Stream.of(Locale.getAvailableLocales());
         Map<String, Set<Locale>> countryToLocaleSet = locales.collect(groupingBy(Locale::getCountry, toSet()));
         System.out.println("countryToLocaleSet: " + countryToLocaleSet);
