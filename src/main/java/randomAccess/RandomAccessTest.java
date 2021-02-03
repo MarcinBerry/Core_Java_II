@@ -33,7 +33,7 @@ public class RandomAccessTest {
     }
 
     public static void writeData(DataOutput out, Employee e) throws IOException {
-        DataIO.writeFixedString(e.getName(), Employee.NAME_SIZE, out);
+        //DataIO.writeFixedString(e.getName(), Employee.NAME_SIZE, out);
         out.writeDouble(e.getSalary());
 
         LocalDate hireDay = e.getHireDay();
@@ -44,7 +44,7 @@ public class RandomAccessTest {
     }
 
     public static Employee readData(DataInput in) throws IOException {
-        String name = DataIO.readFixedString(Employee.NAME_SIZE);
+        String name = ""; /*= DataIO.readFixedString(Employee.NAME_SIZE);*/
         double salary = in.readDouble();
         int y = in.readInt();
         int m = in.readInt();
@@ -53,7 +53,7 @@ public class RandomAccessTest {
     }
 }
 
-private static class Employee {
+class Employee {
     public static int NAME_SIZE;
     public static int RECORD_SIZE;
     private String name;
