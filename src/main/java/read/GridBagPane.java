@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.*;
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.File;
 import java.lang.reflect.Field;
 
@@ -48,7 +51,7 @@ public class GridBagPane extends JPanel {
     }
 
     private void parseGridbag(Element e) {
-        NodeList rows = (Element) e.getChildNodes();
+        NodeList rows = e.getChildNodes();
         for (int i = 0; i < rows.getLength(); i++) {
             Element row = (Element) rows.item(i);
             NodeList cells = row.getChildNodes();
@@ -98,7 +101,7 @@ public class GridBagPane extends JPanel {
         add(comp, constraints);
     }
 
-    private Object praseBean(Element e) {
+    private Object parseBean(Element e) {
         try {
             NodeList children = e.getChildNodes();
             Element classElement = (Element) children.item(0);
@@ -115,8 +118,33 @@ public class GridBagPane extends JPanel {
                 Element nameElement = (Element) propertyElement.getFirstChild();
                 String propertyName = ((Text) nameElement.getFirstChild()).getData();
 
-                Element valueElement
+                Element valueElement = (Element) propertyElement.getLastChild();
+                Object value = parseValue(valueElement);
+                BeanInfo beanInfo = Introspector.getBeanInfo(cl);
+                PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();
+
+                boolean done = false;
+                for (int j = 0; !done && j < descriptors.length; j++) {
+                    if(descriptors[j].getName().equals(propertyName)){
+                        descriptors[j].getWriteMethod().invoke(obj, value);
+                        done = true;
+                    }
+                }
             }
+            return obj;
         }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    private Object parseValue(Element e) {
+        Element child = (Element) e.getFirstChild();
+        if(child.getTagName().equals("bean")) return parseBean(child);
+        String text = ((Text) child.getFirstChild()).getData();
+        if(child.getTagName().equals("int")) return new Integer(text);
+        else if(child.getTagName().equals("boolean")) return new Boolean(text);
+        else if(child.getTagName().equals("string")); return text;
     }
 }
