@@ -11,7 +11,7 @@ public class GridBagTest {
             JFileChooser chooser = new JFileChooser(".");
             chooser.showOpenDialog(null);
             File file = chooser.getSelectedFile();
-            JFrame frmae = new FontFrame(file);
+            JFrame frame = new FontFrame(file);
             frame.setTitle("GridBagTest");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
