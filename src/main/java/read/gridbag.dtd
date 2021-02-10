@@ -4,13 +4,15 @@
 <!ATTLIST cell gridx CDATA #IMPLIED>
 <!ATTLIST cell gridy CDATA #IMPLIED>
 <!ATTLIST cell gridwidth CDATA "1">
-<!ATTLIST cell gridheight CDATA "!">
+<!ATTLIST cell gridheight CDATA "1">
 <!ATTLIST cell weightx CDATA "0">
 <!ATTLIST cell weighty CDATA "0">
 <!ATTLIST cell fill (NONE|BOTH|HORIZONTAL|VERTICAL) "NONE">
-<!ATTLIST cell anchor (CENTER|NORTH|NORTHEAST|EAST|SOUTHEAST|SOUTH|SOUTHWEST|WEST|NORTHWEST) "CENTER">
-<!ATTLIST cell ipax CDATA "0">
-<!ATTLIST cell ipay CDATA "0">
+<!ATTLIST cell anchor
+        (CENTER|NORTH|NORTHEAST|EAST|SOUTHEAST|SOUTH|SOUTHWEST|WEST|NORTHWEST)
+        "CENTER">
+<!ATTLIST cell ipadx CDATA "0">
+<!ATTLIST cell ipady CDATA "0">
 
 <!ELEMENT bean (class, property*)>
 <!ATTLIST bean id ID #IMPLIED>

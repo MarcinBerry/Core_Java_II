@@ -23,7 +23,7 @@ public class GridBagPane extends JPanel {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setValidating(true);
 
-            if(file.toString().contains("-schemta"))
+            if(file.toString().contains("-schema"))
             {
                 factory.setNamespaceAware(true);
                 final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";

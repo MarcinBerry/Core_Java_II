@@ -16,12 +16,13 @@
                 <class>javax.swing.JComboBox</class>
             </bean>
         </cell>
-        <cell gridbagheight="4" fill="BOTH" weightx="100" weighty="100">
-            <bean if="sample">
+        <cell gridheight="4" fill="BOTH" weightx="100" weighty="100">
+            <bean id="sample">
                 <class>javax.swing.JTextArea</class>
                 <property>
                     <name>text</name>
-                    <value><string>Szybki i brązowy list przeskoczył nad leniwym psem.</string></value>
+                    <value><string>Szybki i brązowy list przeskoczył
+                        nad leniwym psem.</string></value>
                 </property>
                 <property>
                     <name>editable</name>
@@ -69,6 +70,7 @@
     <row>
         <cell gridwidth="2" weighty="100">
             <bean id="bold">
+                <class>javax.swing.JCheckBox</class>
                 <property>
                     <name>text</name>
                     <value><string>Pogrubiona</string></value>
