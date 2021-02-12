@@ -43,13 +43,6 @@ public class GridBagPane extends JPanel {
         }
     }
 
-    public Component get(String name) {
-        Component[] components = getComponents();
-        for (int i = 0; i < components.length; i++)
-            if(components[i].getName().equals(name)) return components[i];
-        return null;
-    }
-
     private void parseGridbag(Element e) {
         NodeList rows = e.getChildNodes();
         for (int i = 0; i < rows.getLength(); i++) {
@@ -147,4 +140,12 @@ public class GridBagPane extends JPanel {
         else if(child.getTagName().equals("boolean")) return new Boolean(text);
         else if(child.getTagName().equals("string")); return text;
     }
+
+    public Component get(String name) {
+        Component[] components = getComponents();
+        for (int i = 0; i < components.length; i++)
+            if(components[i].getName().equals(name)) return components[i];
+        return null;
+    }
+
 }

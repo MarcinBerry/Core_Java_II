@@ -8,9 +8,9 @@ import java.io.File;
 public class GridBagTest {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            JFileChooser chooser = new JFileChooser(".");
-            chooser.showOpenDialog(null);
-            File file = chooser.getSelectedFile();
+//            JFileChooser chooser = new JFileChooser(".");
+//            chooser.showOpenDialog(null);
+            File file = new File("src\\main\\java\\read\\fontdialog.dtd");
             JFrame frame = new FontFrame(file);
             frame.setTitle("GridBagTest");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
