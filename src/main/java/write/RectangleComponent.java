@@ -36,7 +36,7 @@ public class RectangleComponent extends JComponent {
     }
 
     public void newDrawing() {
-        int n = 10 + generator.nextInt();
+        int n = 10 + generator.nextInt(20);
         rects.clear();
         colors.clear();
         for (int i = 0; i <= n; i++) {
